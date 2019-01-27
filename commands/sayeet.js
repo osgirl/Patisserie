@@ -3,8 +3,8 @@ const timeout = new Map();
 const minute = 60000;
 const threeMin = minute * 3;
 module.exports = {
-    name: 'wulfu',
-    description: 'wulfu',
+    name: 'sayeet',
+    description: 'sayeet',
     execute(message, args) {
 
         if(lastTalked.has(message.author.id)){
