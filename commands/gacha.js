@@ -30,41 +30,31 @@ module.exports = {
 
             const colorRoles = JSON.parse(data);
             var colorRolesArr = [];
+            var rolesToRemove = [];
 
             for(var i = 0; i < Object.keys(colorRoles).length; i++){
-                colorRolesArr[i] = message.guild.roles.find(res => res.name === colorRoles[i]);
+                colorRolesArr.push(message.guild.roles.find(res => res.name === colorRoles[i]));
                 colorRolesArr.push(colorRolesArr[i]);
             } 
 
-            fs.readFile('./Roles/memberRoleDB.json' , (err, data)=>{
-                if(err) throw err;
-                var memberDB = JSON.parse(data);
+            for (var i = 0; i < Object.keys(colorRoles).length; i++){
+                rolesToRemove.push(colorRoles[i]);
+            }
 
-                if(memberDB.hasOwnProperty(message.author.id)){
-                    message.member.removeRole(message.guild.roles.find(res => res.name === memberDB[message.author.id])).then(() =>{
-                        delete memberDB[message.author.id];
-                    });
-                }
+            for(var i = 0; i < rolesToRemove.length; i++){
+                message.member.removeRole(message.guild.roles.find(res => res.name === rolesToRemove[i])).catch();
+            }
+                
 
-                let min = 0; 
-                let max = colorRolesArr.length;
+            let min = 0; 
+            let max = colorRolesArr.length;
         
-                var randomNum = Math.random() * (max-min) + min;
-                randomNum = Math.floor(randomNum);
-                var colorRole = colorRolesArr[randomNum];
+            var randomNum = Math.random() * (max-min) + min;
+            randomNum = Math.floor(randomNum);
+            const colorRole = colorRolesArr[randomNum];
 
-                memberDB[message.author.id] = colorRole.name;
-
-                memberDB = JSON.stringify(memberDB, null, 2);
-                fs.writeFileSync('./Roles/memberRoleDB.json', memberDB, err =>{
-                    if(err) throw err;
-                });
-
-                message.member.addRole(colorRole);
-                message.channel.send(`You got the ${colorRole.name} role!`);
-
-            });
-            
+            message.member.addRole(colorRole);
+            message.channel.send(`You got the ${colorRole.name} role!`);
 
         });
 
