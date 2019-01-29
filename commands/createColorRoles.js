@@ -4,15 +4,6 @@ module.exports = {
     description: 'Writes allowed color roles using ./Roles/serverRoles.json, to ./Roles/colorRoles.json' ,
     execute(message, args) {
 
-        /*
-        var role = message.guild.roles.find('name' , 'Blueberry Mousse');
-
-        var memberRoles = {
-                [message.author.id]: role.name  
-            };
-
-        console.log(memberRoles);*/
-
         if(message.author.id !== '226457061959925761') return;
 
 
