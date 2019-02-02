@@ -35,7 +35,7 @@ client.on('message' , message => {
     catch (error) {
         console.log('[ERROR]'.red);
         console.error(`${error}`.yellow);
-        message.channel.send(`:warning: __**\`Command Execution Failed.\`**__\`\n\`\`\`js\n${error}\`\`\``);
+        message.channel.send(`:warning: __**\`Command Execution Failed.\`**__\n\`\`\`js\n${error}\`\`\``);
 }
 });
 
