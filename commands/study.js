@@ -7,7 +7,7 @@ module.exports = {
         if(mention.length === 0) return message.channel.send('Invalid mention');
 
         for(var i in mention){mention[i] = `<@${mention[i]}>`;}
-        mention = String(mention).replace(',' , ' ');
+        mention = String(mention).split(',').join(' ');
 
         message.channel.send(`GO STUDY ${mention}!`).then((sentMessage)=>{
             message.delete(1000);
