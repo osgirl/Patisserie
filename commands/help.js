@@ -1,18 +1,27 @@
 const Discord = require('discord.js');
+const {prefix} = require('../config.json');
+
 module.exports = {
     name: 'help',
-    description: 'help',
+    description: 'Show help page.',
     execute(message, args) {
+        const {commands} = message.client;
 
-        const helpEmbed = new Discord.RichEmbed()
-        .setAuthor(message.client.user.tag, message.client.user.avatarURL)
-        .addField('p!mary' , 'Ping Mary to pracc.\nMake sure she doesn\'t do Hanon.' , true)
-        .addField('p!wulfu' , 'Ping DarkWolf009 to sleep.\nHe is always staying up late. AWOOO!' , true)
-        .addField('p!sayeet' , 'Ping Sayeedur to sleep.\nHe is an EU nerd that never sleeps.' , true)
-        .addField('p!meekity' , 'Ping Meekity to change his nick.\nHe is a fakeProject' , true)
-        .addField('p!gacha' , 'Get a random color role!\n3hr cooldown.' , true)
-        .setColor('#ffbdbd');
+        var data = [];
+        for(var i = 0; i < commands.map(res => res).length; i++){
+            data[i] = `${commands.map(res => res.name)[i]}, ${commands.map(res => res.description)[i]}`;
+            data.push(data[i]);
+        }
+
+        var helpEmbed = new Discord.RichEmbed()
+         .setAuthor(message.client.user.tag, message.client.user.avatarURL)
+         .setFooter(`Prefix is ${prefix}`)
+         .setColor('#ffbdbd');
+
+        for(var i = 0; i < commands.map(res => res).length; i++){
+            helpEmbed.addField(commands.map(res => res.name)[i] , commands.map(res => res.description)[i]);
+        }
+
         message.channel.send({embed : helpEmbed});
-
     }
 }

@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 module.exports = {
     name: 'hug',
-    description: 'hug',
+    description: 'Show your love by pinging someone!',
     execute(message, args) {
 
         const LoveLove = '<a:aLoveLove:536184612171415572>';

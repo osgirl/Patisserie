@@ -6,7 +6,7 @@ const Threehours = minute*60*3;
 
 module.exports = {
     name: 'gacha',
-    description: 'gacha',
+    description: 'Get a color random role! 3hr cooldown.',
     execute(message, args) {
 
         if(lastTalked.has(message.author.id)){
@@ -65,3 +65,6 @@ module.exports = {
         
     }
 }
+
+      
+      

@@ -1,6 +1,6 @@
 module.exports = {
     name: 'eval',
-    description: 'Owner Only.',
+    description: 'Fancy JS eval. Only for Kai and Airi.',
     execute(message, args) {
 
         if(message.author.id !== ('226457061959925761' || '449970614380527618')) return;
