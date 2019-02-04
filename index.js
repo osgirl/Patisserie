@@ -11,7 +11,7 @@ client.commands = new Discord.Collection();
 
 client.on('ready' , () =>{
     console.log(`Logged in as ${client.user.tag}`);
-    client.user.setActivity(`${client.users.size} painists are not practicing!`);
+    client.user.setActivity(`${client.users.size} pianists need to pracc!` , {type : "STREAMING"});
 });
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
